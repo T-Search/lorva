@@ -35,7 +35,7 @@ public class LoginController {
 
     @Autowired
     private AuthorizationClient authorizationClient;
-    
+
     @Autowired
     private BroadcasterRepository broadcasterRepository;
 
@@ -45,11 +45,13 @@ public class LoginController {
                               @RequestParam(value = "state", required = false) String state,
                               RedirectAttributes attributes) {
         Optional<TokenResponse> tokenResponseOptional = authorizationClient.getTokenFromAuthorizationCode(code, twitchRedirectUri);
-        if (tokenResponseOptional.isEmpty()) return login("server-error", "Cannot get access token from code", state, attributes);
+        if (tokenResponseOptional.isEmpty())
+            return login("server-error", "Cannot get access token from code", state, attributes);
 
         TokenResponse tokenResponse = tokenResponseOptional.get();
         Optional<TokenValidateResponse> validateResponseOptional = authorizationClient.validateToken(tokenResponse.getAccessToken());
-        if (validateResponseOptional.isEmpty()) return login("server-error", "Cannot validate access token", state, attributes);
+        if (validateResponseOptional.isEmpty())
+            return login("server-error", "Cannot validate access token", state, attributes);
 
         TokenValidateResponse validateResponse = validateResponseOptional.get();
         Broadcaster broadcaster;
@@ -73,8 +75,8 @@ public class LoginController {
 
     @GetMapping(value = "login", params = {"error", "error_description"})
     public RedirectView login(@RequestParam(value = "error") String error,
-                        @RequestParam(value = "error_description") String description,
-                        @RequestParam(value = "state", required = false) String state,
+                              @RequestParam(value = "error_description") String description,
+                              @RequestParam(value = "state", required = false) String state,
                               RedirectAttributes attributes) {
         attributes.addAttribute("error", error);
         attributes.addAttribute("description", description);

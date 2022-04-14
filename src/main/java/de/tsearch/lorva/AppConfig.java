@@ -1,6 +1,8 @@
 package de.tsearch.lorva;
 
-import de.tsearch.tclient.*;
+import de.tsearch.tclient.AuthorizationClient;
+import de.tsearch.tclient.Config;
+import de.tsearch.tclient.TClientInstance;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
