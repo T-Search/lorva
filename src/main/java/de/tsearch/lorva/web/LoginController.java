@@ -1,6 +1,7 @@
 package de.tsearch.lorva.web;
 
 import de.tsearch.lorva.database.postgres.entity.Broadcaster;
+import de.tsearch.lorva.database.postgres.entity.StreamStatus;
 import de.tsearch.lorva.database.postgres.repository.BroadcasterRepository;
 import de.tsearch.tclient.AuthorizationClient;
 import de.tsearch.tclient.http.respone.TokenResponse;
@@ -62,6 +63,7 @@ public class LoginController {
             broadcaster = new Broadcaster();
             broadcaster.setId(validateResponse.getUserId());
             broadcaster.setDisplayName(validateResponse.getLogin());
+            broadcaster.setStatus(StreamStatus.OFFLINE);
         }
 
         broadcaster.setTwitchAuthorised(true);
