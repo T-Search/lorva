@@ -61,6 +61,7 @@ public class LoginController {
         } else {
             broadcaster = new Broadcaster();
             broadcaster.setId(validateResponse.getUserId());
+            broadcaster.setDisplayName(validateResponse.getLogin());
         }
 
         broadcaster.setTwitchAuthorised(true);
