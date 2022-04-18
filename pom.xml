@@ -10,7 +10,7 @@
     </parent>
     <groupId>de.tsearch</groupId>
     <artifactId>lorva</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <name>lorva</name>
     <description>lorva</description>
     <properties>
@@ -49,7 +49,7 @@
         <dependency>
             <groupId>de.tsearch</groupId>
             <artifactId>tclient</artifactId>
-            <version>0.0.8-SNAPSHOT</version>
+            <version>0.0.11-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
